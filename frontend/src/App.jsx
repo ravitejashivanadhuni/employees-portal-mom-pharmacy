@@ -97,8 +97,7 @@ function App() {
         }}
       >
         {/* <Header /> */}
-        
-        <main style={{ padding: '20px', textAlign: 'center' }}>
+        <main style={{  textAlign: 'center' }}>
           <Routes>
             <Route path = "/user-dashboard-header" element={<Header />}/>
             {/* <Route path = "/landing-page-header" element={<LandingPageHeader />} /> */}

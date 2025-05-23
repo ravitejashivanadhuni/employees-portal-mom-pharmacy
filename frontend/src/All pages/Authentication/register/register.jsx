@@ -95,18 +95,18 @@ const handleSubmit = async (e) => {
           <input type="text" className="namee " placeholder="First Name " value={firstName} onChange={(e) => setFirstName(e.target.value)} />
           <input type="text" className="namee " placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
         </div>
-        <div className="errorsss">{errors.firstName && <span>{errors.firstName}</span>}
-        {errors.lastName && <span>{errors.lastName}</span>}</div>
+        <div className="errorsss">{errors.firstName && <span className="error_fields">{errors.firstName}</span>}
+        {errors.lastName && <span className="error_fields">{errors.lastName}</span>}</div>
 
         <div className="row">
           <input type="text" className="namee " placeholder="Username" value={username} onChange={(e) => setUserName(e.target.value)} />
           <input type="text" className="namee " placeholder="Mobile Number" value={mobilenumber} onChange={(e) => setMobileNumber(e.target.value)} />
         </div>
-        <div className="errorsss1">{errors.username && <span>{errors.username}</span>}
-        {errors.mobilenumber && <span>{errors.mobilenumber}</span>}</div>
+        <div className="errorsss1">{errors.username && <span className="error_fields">{errors.username}</span>}
+        {errors.mobilenumber && <span className="error_fields">{errors.mobilenumber}</span>}</div>
     
         <input className="email-style email-style1" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <div className="errorssemail">{errors.email && <span>{errors.email}</span>}</div>
+        <div className="errorssemail">{errors.email && <span className="error_fields">{errors.email}</span>}</div>
 
      
         <div className="password">
@@ -142,7 +142,7 @@ const handleSubmit = async (e) => {
           </button>
         </div>
         {errors.password && (
-          <span className="text-red-500 errorssemail">{errors.password}</span>
+          <span className="text-red-500 errorssemail error_fields">{errors.password}</span>
         )}
         <div className="confirm-password">
           <input
@@ -177,7 +177,7 @@ const handleSubmit = async (e) => {
           </button>
         </div>
         {errors.confirmPassword && (
-          <span className="text-red-500">{errors.confirmPassword}</span>
+          <span className="text-red-500 error_fields">{errors.confirmPassword}</span>
         )}
 
         <div className="row">
@@ -188,8 +188,8 @@ const handleSubmit = async (e) => {
             <option value="Female">Female</option>
           </select>
         </div>
-        <div className="errorsss2">{errors.dateOfBirth && <span>{errors.dateOfBirth}</span>}
-        {errors.gender && <span>{errors.gender}</span>}</div>
+        <div className="errorsss2">{errors.dateOfBirth && <span className="error_fields">{errors.dateOfBirth}</span>}
+        {errors.gender && <span className="error_fields">{errors.gender}</span>}</div>
 
         <div className="row">
           <select value={roletype} onChange={handleRoleTypeChange}>
@@ -205,11 +205,11 @@ const handleSubmit = async (e) => {
             ))}
           </select>
         </div>
-        <div className="errorsss3">{errors.roletype && <span>{errors.roletype}</span>}
-        {errors.role && <span>{errors.role}</span>}</div>
+        <div className="errorsss3">{errors.roletype && <span className="error_fields">{errors.roletype}</span>}
+        {errors.role && <span className="error_fields">{errors.role}</span>}</div>
 
         <button type="submit" disabled={loader}>{loader ? "Registering..." : "Register"}</button>
-        <p>Already have an account? <span onClick={() => navigate('../login')}>Login here</span></p>
+        <p>Already have an account? <span className="error_fields" onClick={() => navigate('../login')}>Login here</span></p>
       </form>
     </div>
   );

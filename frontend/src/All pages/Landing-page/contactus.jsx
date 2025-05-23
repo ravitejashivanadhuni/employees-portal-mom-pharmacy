@@ -36,7 +36,7 @@ const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
   };
 
   return (
-    <section id="contact" className="contact-section bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+  <section id="contact"  className="contact-section bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto text-center">
         <h2 className="text-3xl font-bold text-gray-900">Contact Us</h2>
         <p className="mt-2 text-lg text-gray-600">Have questions? Reach out to us!</p>

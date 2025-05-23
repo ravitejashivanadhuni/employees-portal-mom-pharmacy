@@ -124,7 +124,7 @@
   background-color: #1A4D4D;
 }
 
-span {
+.error_fields {
   color: red;
   font-size: 12px;
   margin-bottom: 5px;
