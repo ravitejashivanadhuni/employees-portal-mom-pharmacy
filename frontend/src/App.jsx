@@ -48,7 +48,6 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegistrationPage />} />
             <Route path="/employee-dashboard" element={<div>Employee Dashboard</div>} />
-            {/* <Route path="/super-admin-dashboard" element={<div>Super Admin Dashboard</div>} /> */}
             <Route path="/supervisor-dashboard" element={<SVBody />} />
             <Route path="/leave-manager-dashboard" element={<LMBody />} />
             <Route path="/leave-manager-LR" element={<RLeaveBodyLM />} />
