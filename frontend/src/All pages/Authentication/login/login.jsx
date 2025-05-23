@@ -150,7 +150,7 @@ const LoginPage = () => {
           </div>
         </div>
 
-        <button type="submit" disabled={loading}>
+        <button className='button_login' type="submit" disabled={loading}>
           {loading ? 'Logging in...' : 'Login'}
         </button>
         <p>Dont have an account? <span onClick={() => navigate('../register')}>Register here</span></p>

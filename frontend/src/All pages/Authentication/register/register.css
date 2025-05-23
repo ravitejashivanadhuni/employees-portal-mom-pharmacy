@@ -11,7 +11,7 @@
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 30%;
+  width: 100%;
   max-width: 600px;
 }
 
@@ -25,32 +25,13 @@
   gap: 15px;
   margin-bottom: 15px;
 }
-.errorsss{
+
+.input-wrapper {
+  flex: 1;
   display: flex;
-  gap: 70px;
-  margin-bottom: 5px;
+  flex-direction: column;
 }
-.errorsss1{
-  display: flex;
-  gap:70px;
-  margin-bottom: 5px;
-}
-.errorsss2{
-   display: flex;
-    gap: 55px;
-    margin-bottom: 5px;
-    margin-top: -15px;
-}
-.errorsss3{
-    display: flex;
-    gap: 72px;
-    margin-bottom: 5px;
-    margin-top: -15px;
-}
-.errorssemail{
-    margin-bottom: 8px;
-    text-align: start;
-}
+
 .registration-form input,
 .registration-form select {
   flex: 1;
@@ -59,78 +40,45 @@
   border-radius: 5px;
   font-size: 14px;
 }
-.email-style{
+
+.email-style {
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
-.registration-form input[type="date"],
-.registration-form select,
-.registration-form .password-wrapper {
+.password,
+.confirm-password {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
   width: 100%;
-  margin-bottom: 15px;
-}
-.password{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
-  width:100%;
-}
-.confirm-password{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
 }
 
-.pass_eye{
-      margin-top: 0%;
-    margin-left: 1.7%;
-    width: 50px;
-    background-color: #ddd;
-    padding: 12px;
-    border-radius: 10px;
-}
-.pass_eyeslash{
-      margin-top: 0%;
-    margin-left: 1.7%;
-    width: 50px;
-    background-color: #ddd;
-    padding: 12px;
-    border-radius: 10px;
-}
-/* .password-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-} */
-
-.password-wrapper input {
-  flex: 1;
+.pass_eye,
+.pass_eyeslash {
+  margin-left: 1.7%;
+  width: 50px;
+  background-color: #ddd;
+  padding: 12px;
+  border-radius: 10px;
 }
 
-.password-wrapper button {
-  padding: 10px;
-  font-size: 12px;
-  background-color: #0D9488;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.password-wrapper button:hover {
-  background-color: #1A4D4D;
-}
-
-.error_fields {
+.error-field {
   color: red;
   font-size: 12px;
-  margin-bottom: 5px;
-  display: block;
+  min-height: 18px; /* Reserve space for error messages */
+  margin-top: 2px;
+  text-align: left;
 }
-
+.error-field_confirm1{
+  color: red;
+  font-size: 12px;
+  min-height: 18px; /* Reserve space for error messages */
+  /* margin-top: 2px; */
+  text-align: left;
+  margin-right: 400px;
+}
 
 button[type="submit"] {
   width: 100%;
@@ -160,43 +108,19 @@ button[type="submit"]:hover {
   text-decoration: underline;
 }
 
-/* media quries */
-@media (max-width:600px){
+/* Media Queries */
+@media (max-width: 600px) {
   .registration-form {
-  background: rgb(224, 22, 22);
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 30%;
-  max-width: 600px;
-}
-}
-@media (min-width:600px){
-  .namee {
-  flex: 1;
-  padding: 10px;
-  width:30px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-}
-}
-@media (max-width:769px){
-/* .email-style1 {
-  padding: 10px;
-  width: 209px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-} */
-}
-@media (min-width:600px){
-.pass {
-  padding: 10px;
-  width: 129px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-}
+    width: 90%;
+  }
 }
 
+@media (min-width: 600px) {
+  .namee {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+}

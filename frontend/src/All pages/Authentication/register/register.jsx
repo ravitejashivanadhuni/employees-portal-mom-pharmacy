@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import "./register.css";
 import eye from '../../../assets/eye.svg';
-import eyeSlash from '../../../assets/eye-slash.svg'
+import eyeSlash from '../../../assets/eye-slash.svg';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-
-const RegistrationPage = ({}) => {
+const RegistrationPage = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUserName] = useState("");
@@ -42,35 +41,35 @@ const RegistrationPage = ({}) => {
     return Object.keys(newErrors).length === 0;
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (validateForm()) {
-    setLoader(true);
-    const registrationData = {
-      firstName,
-      lastName,
-      username,
-      mobilenumber,
-      email,
-      password,
-      dateOfBirth,
-      gender,
-      roletype,
-      role,
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      setLoader(true);
+      const registrationData = {
+        firstName,
+        lastName,
+        username,
+        mobilenumber,
+        email,
+        password,
+        dateOfBirth,
+        gender,
+        roletype,
+        role,
+      };
 
-    try {
-      const response = await axios.post("http://localhost:5000/api/auth/register", registrationData);
-      alert("Registration successful!");
-      navigate("/login");
-    } catch (error) {
-      console.error("Registration failed:", error);
-      alert(error.response?.data?.message || "Something went wrong. Please try again later.");
-    } finally {
-      setLoader(false);
+      try {
+        const response = await axios.post("http://localhost:5000/api/auth/register", registrationData);
+        alert("Registration successful!");
+        navigate("/login");
+      } catch (error) {
+        console.error("Registration failed:", error);
+        alert(error.response?.data?.message || "Something went wrong. Please try again later.");
+      } finally {
+        setLoader(false);
+      }
     }
-  }
-};
+  };
 
   const handleRoleTypeChange = (e) => {
     setRoleType(e.target.value);
@@ -81,41 +80,80 @@ const handleSubmit = async (e) => {
     if (roletype === "Admin") {
       return ["Super Admin", "Leave Manager", "Supervisor"];
     } else if (roletype === "Employee") {
-      return ["Full Stack Developer Intern", "UI/UX Designer Intern","Graphic Designer Intern","Testing Intern","Investment Intern"];
+      return ["Full Stack Developer Intern", "UI/UX Designer Intern", "Graphic Designer Intern", "Testing Intern", "Investment Intern"];
     }
     return [];
   };
 
   return (
     <div className="registration-container">
-      <form className="registration-form " onSubmit={handleSubmit}>
-        <h2 >Register</h2>
-
-        <div className="row ">
-          <input type="text" className="namee " placeholder="First Name " value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-          <input type="text" className="namee " placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-        </div>
-        <div className="errorsss">{errors.firstName && <span className="error_fields">{errors.firstName}</span>}
-        {errors.lastName && <span className="error_fields">{errors.lastName}</span>}</div>
+      <form className="registration-form" onSubmit={handleSubmit}>
+        <h2>Register</h2>
 
         <div className="row">
-          <input type="text" className="namee " placeholder="Username" value={username} onChange={(e) => setUserName(e.target.value)} />
-          <input type="text" className="namee " placeholder="Mobile Number" value={mobilenumber} onChange={(e) => setMobileNumber(e.target.value)} />
+          <div className="input-wrapper">
+            <input
+              type="text"
+              className="namee"
+              placeholder="First Name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+            <span className="error-field">{errors.firstName || ""}</span>
+          </div>
+          <div className="input-wrapper">
+            <input
+              type="text"
+              className="namee"
+              placeholder="Last Name"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+            <span className="error-field">{errors.lastName || ""}</span>
+          </div>
         </div>
-        <div className="errorsss1">{errors.username && <span className="error_fields">{errors.username}</span>}
-        {errors.mobilenumber && <span className="error_fields">{errors.mobilenumber}</span>}</div>
-    
-        <input className="email-style email-style1" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <div className="errorssemail">{errors.email && <span className="error_fields">{errors.email}</span>}</div>
 
-     
+        <div className="row">
+          <div className="input-wrapper">
+            <input
+              type="text"
+              className="namee"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUserName(e.target.value)}
+            />
+            <span className="error-field">{errors.username || ""}</span>
+          </div>
+          <div className="input-wrapper">
+            <input
+              type="text"
+              className="namee"
+              placeholder="Mobile Number"
+              value={mobilenumber}
+              onChange={(e) => setMobileNumber(e.target.value)}
+            />
+            <span className="error-field">{errors.mobilenumber || ""}</span>
+          </div>
+        </div>
+
+        <div className="input-wrapper">
+          <input
+            className="email-style"
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <span className="error-field">{errors.email || ""}</span>
+        </div>
+
         <div className="password">
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="relative w-full px-4 py-2 border border-gray-600 rounded-lg outline-none transition duration-200 hover:border-[#76a988] focus:border-[#6bcc8d]  focus:ring focus:ring-[#4DC3AB] focus:outline-none pr-10"
+            className="relative w-full px-4 py-2 border border-gray-600 rounded-lg outline-none transition duration-200 hover:border-[#76a988] focus:border-[#6bcc8d] focus:ring focus:ring-[#4DC3AB] focus:outline-none pr-10"
           />
           <button
             type="button"
@@ -123,27 +161,14 @@ const handleSubmit = async (e) => {
             className="ml-2 text-gray-600 pass_eye"
           >
             {showPassword ? (
-              <img
-                src={eye}
-                className="w-6"
-                alt="Hide password"
-                width="16"
-                height="16"
-              />
+              <img src={eye} className="w-6" alt="Hide password" width="16" height="16" />
             ) : (
-              <img
-                src={eyeSlash}
-                className="w-6 "
-                alt="Show password"
-                width="16"
-                height="16"
-              />
+              <img src={eyeSlash} className="w-6" alt="Show password" width="16" height="16" />
             )}
           </button>
         </div>
-        {errors.password && (
-          <span className="text-red-500 errorssemail error_fields">{errors.password}</span>
-        )}
+        <span className="error-field_confirm">{errors.password || ""}</span>
+
         <div className="confirm-password">
           <input
             type={showSecondPassword ? "text" : "password"}
@@ -158,58 +183,62 @@ const handleSubmit = async (e) => {
             className="ml-2 text-gray-600 pass_eyeslash"
           >
             {showSecondPassword ? (
-              <img
-                src={eye}
-                className="w-6"
-                alt="Hide password"
-                width="16"
-                height="16"
-              />
+              <img src={eye} className="w-6" alt="Hide password" width="16" height="16" />
             ) : (
-              <img
-                src={eyeSlash}
-                className="w-6"
-                alt="Show password"
-                width="16"
-                height="16"
-              />
+              <img src={eyeSlash} className="w-6" alt="Show password" width="16" height="16" />
             )}
           </button>
         </div>
-        {errors.confirmPassword && (
-          <span className="text-red-500 error_fields">{errors.confirmPassword}</span>
-        )}
+        <span className="error-field_confirm1">{errors.confirmPassword || ""}</span>
 
         <div className="row">
-          <input type="date" value={dateOfBirth} onChange={(e) => setDateOfBirth(e.target.value)} />
-          <select value={gender} onChange={(e) => setGender(e.target.value)}>
-            <option value="">Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </select>
+          <div className="input-wrapper">
+            <input
+              type="date"
+              value={dateOfBirth}
+              onChange={(e) => setDateOfBirth(e.target.value)}
+            />
+            <span className="error-field">{errors.dateOfBirth || ""}</span>
+          </div>
+          <div className="input-wrapper">
+            <select value={gender} onChange={(e) => setGender(e.target.value)}>
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+            <span className="error-field">{errors.gender || ""}</span>
+          </div>
         </div>
-        <div className="errorsss2">{errors.dateOfBirth && <span className="error_fields">{errors.dateOfBirth}</span>}
-        {errors.gender && <span className="error_fields">{errors.gender}</span>}</div>
 
         <div className="row">
-          <select value={roletype} onChange={handleRoleTypeChange}>
-            <option value="">Access Type</option>
-            <option value="Admin">Admin</option>
-            <option value="Employee">Employee</option>
-          </select>
-
-          <select value={role} onChange={(e) => setRole(e.target.value)}>
-            <option value="">Select Role</option>
-            {getRoleOptions().map((r) => (
-              <option key={r} value={r}>{r}</option>
-            ))}
-          </select>
+          <div className="input-wrapper">
+            <select value={roletype} onChange={handleRoleTypeChange}>
+              <option value="">Access Type</option>
+              <option value="Admin">Admin</option>
+              <option value="Employee">Employee</option>
+            </select>
+            <span className="error-field">{errors.roletype || ""}</span>
+          </div>
+          <div className="input-wrapper">
+            <select value={role} onChange={(e) => setRole(e.target.value)}>
+              <option value="">Select Role</option>
+              {getRoleOptions().map((r) => (
+                <option key={r} value={r}>{r}</option>
+              ))}
+            </select>
+            <span className="error-field">{errors.role || ""}</span>
+          </div>
         </div>
-        <div className="errorsss3">{errors.roletype && <span className="error_fields">{errors.roletype}</span>}
-        {errors.role && <span className="error_fields">{errors.role}</span>}</div>
 
-        <button type="submit" disabled={loader}>{loader ? "Registering..." : "Register"}</button>
-        <p>Already have an account? <span className="error_fields" onClick={() => navigate('../login')}>Login here</span></p>
+        <button type="submit" disabled={loader}>
+          {loader ? "Registering..." : "Register"}
+        </button>
+        <p>
+          Already have an account?{" "}
+          <span className="error_fields" onClick={() => navigate('../login')}>
+            Login here
+          </span>
+        </p>
       </form>
     </div>
   );
